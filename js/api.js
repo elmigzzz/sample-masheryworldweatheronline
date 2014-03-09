@@ -1,3 +1,5 @@
+/*jslint browser:true, devel:true, white:true, vars:true, eqeq:true */
+/*global $:false, invalidKey:false*/
 // ********************SET YOUR API KEY HERE****************************
 // Insert your World Weather Online API key here. README for more info.
 var apiKey = 'PLACE-YOUR-API-KEY-HERE';
@@ -6,10 +8,10 @@ var apiKey = 'PLACE-YOUR-API-KEY-HERE';
 // Check if valid API Key
 function checkKeyValidity() {
     var url = "http://api.worldweatheronline.com/free/v1/weather.ashx?q=94103&format=json&key=" + apiKey;
-	invalidKey = false;
+	var invalidKey = false;
 
 	// Docs: http://app-framework-software.intel.com/api2/index.html#$_get
-	keyTest = $.get(url, "GET", function(data) {});
+	var keyTest = $.get(url, "GET", function(data) {});
 	keyTest.onreadystatechange = function() {
 		if (keyTest.readyState == 4) {
 			if (keyTest.status == 403) {
@@ -17,7 +19,7 @@ function checkKeyValidity() {
 				invalidKey = true;
 			}
 		}
-	}
+	};
 }
 
 function invalidKeyAlert() {
@@ -40,7 +42,7 @@ function search() {
       dataType: "jsonp",
       url: url,
       success: searchCallback
-    })
+    });
 }
 
 function searchCallback(data) {
